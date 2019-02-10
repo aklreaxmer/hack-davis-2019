@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+
+   {% block body %}
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+   <header class="masthead text-white text-center">
+     <div class="overlay"></div>
+     <div class="container">
+       <div class="row">
+         <div class="col-xl-9 mx-auto">
+           <h1 class="landing-heading">Connect to Faculty for Research Opportunities</h1>
+         </div>
+           <form action="/search" method="POST" >
+             <div class="form-row">
+                 <input type="text" name="term" class="form-control form-control-lg" placeholder="Search for labs, professors, keywords...">
+                 <button type="submit" class="btn btn-block btn-lg btn-primary">Go!</button>
+             </div>
+           </form>
+       </div>
+       <div style="color: white">
+         Professor/Postdoc/Grad Student? <a style="color:white"><u>Connect to undergraduates</u></a>.
+       </div>
+     </div>
+   </header>
+   <div class="alert alert-info" style="margin-top:20px;" role="alert">
+     <strong>Recent Posting</strong>: "{{last_posting.text[:100]}}..."
+      by <strong> {{last_posting.name}}</strong> on {{last_posting.date}}. <a href="/postings">View.</a>
+   </div>
+
+   {% endblock %}

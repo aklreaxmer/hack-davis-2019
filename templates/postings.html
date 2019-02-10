@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+
+   {% block body %}
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+   <div class="search">
+     <h2>Faculty Postings</h2>
+     <hr>
+       <div class="row">
+
+         <!-- Post Content Column -->
+         <div class="col-lg-8">
+           {%
+             for post in postings %}
+
+              <h4 class="mt-3" style="display: inline">{{ post.name }}</h4> &nbsp;&nbsp;<i>{{post.date}}</i><br>
+             <p>{{post.text}}</p>
+             <a href="/lab/{{post.lab_id}}">Lab Page</a>
+
+             <hr>
+           {% endfor %}
+           <hr>
+
+
+
+
+
+         </div>
+
+       </div>
+       <!-- /.row -->
+
+     </div>
+
+   {% endblock %}

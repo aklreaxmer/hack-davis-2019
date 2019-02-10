@@ -1,0 +1,71 @@
+
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/" style="margin-top:-8px"><img src="/static/img/logo.png" width=50></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+
+        <li><a href="/postings">Faculty Postings</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Labs By Category <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/search">All Labs</a></li>
+
+            <li><a href="/search/AI">Artificial Intelligence</a></li>
+            <li><a href="/search/Computer Security">Computer Security</a></li>
+              <li><a href="/search/Computer Science">Computer Science</a></li>
+              <li><a href="/search/Statistics">Statistics</a></li>
+              <li><a href="/search/Bioinformatics">Bioinformatics</a></li>
+              <li><a href="/search/Biochemistry">Biochemistry</a></li>
+              <li><a href="/search/Analytic Chemistry">Analytic Chemistry</a></li>
+              <li><a href="/search/Bioinorganic Chemistry">Bioinorganic Chemistry</a></li>
+              <li><a href="/search/Biophysical Chemistry">Biophysical Chemistry</a></li>
+
+              <li><a href="/search/Genetics">Genetics</a></li>
+              <li><a href="/search/Pharmacology">Pharmacology</a></li>
+                <li><a href="/search/Molecular biology">Molecular biology</a></li>
+                <li><a href="/search/Evolutionary Ecology">Evolutionary Ecology</a></li>
+                <li><a href="/search/Microbiology">Microbiology</a></li>
+                <li><a href="/search/Cell Biology">Cell Biology</a></li>
+
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <li><a href="/contact">Contact</a>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    {% if session['logged_in'] %}
+                    Hi, {{session['username'].capitalize()}}!
+                    <span class="caret"></span></a>
+
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/logout">Log Out</a></li>
+                    {% else %}
+                  <li><a href="/login">Log in</a></li>
+                    {% endif %}
+
+            </ul>
+          </li>
+        </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

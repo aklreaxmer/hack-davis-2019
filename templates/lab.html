@@ -1,0 +1,87 @@
+{% extends "main.html" %}
+
+   {% block body %}
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+   <div class="row">
+
+         <!-- Post Content Column -->
+         <div class="col-lg-8">
+
+           <!-- Title -->
+           <h1 class="mt-4">{{data[0].PI}}</h1>
+           <p class="lead"  >Website: <a href="{{data[0].link}}">{{data[0].link}}</a></p>
+
+           <hr>
+
+           <!-- Post Content -->
+           <h3>Description:</h3>
+           <p class="lead">
+             {{data[0].desc}}
+           </p>
+           <hr>
+
+           <!-- Comments Form -->
+           <div class="card my-4">
+             <h5 class="card-header">Leave a Comment:</h5>
+             <div class="card-body">
+               <form>
+                 <div class="form-group">
+                   <textarea class="form-control" rows="3"></textarea>
+                 </div>
+                 <button type="submit" class="btn btn-primary">Submit</button>
+               </form>
+             </div>
+           </div>
+
+           {% for comment in data[1] %}
+           <!-- Single Comment -->
+           <div class="media mb-4">
+             <div class="media-body">
+               <h4 class="mt-0" style="display: inline">{{comment.name}}</h4> <i>on {{comment.date}}</i><br>
+               <p style="font-size: 16px">{{comment.text}}</p>
+             </div>
+           </div>
+           {% endfor %}
+
+
+
+             </div>
+
+
+         <!-- Sidebar Widgets Column -->
+         <div class="col-md-4">
+
+           <!-- Search Widget -->
+           <div class="card my-4">
+             <h5 class="card-header">Search</h5>
+             <div class="card-body">
+               <div class="input-group">
+                 <form action="/search" method="POST" >
+                   <div class="form-row">
+                       <input type="text" name="term" class="form-control form-control-lg" placeholder="Search for labs, professors, keywords...">
+                       <br><br><button type="submit" style="width: 80px;" class="btn btn-block btn-lg btn-primary">Go!</button>
+                   </div>
+                 </form>
+               </div>
+             </div>
+           </div>
+
+
+           <!-- Side Widget -->
+           <div class="card my-4">
+             <h5 class="card-header">Announcements</h5>
+             <div class="card-body">
+               {% for announcement in announcements %}
+               <p>
+                 {{announcement.text}}
+                  <strong>-{{announcement.name}}</strong></p>
+               {% endfor %}
+             </div>
+           </div>
+
+         </div>
+       </div>
+
+       </div>
+   {% endblock %}
